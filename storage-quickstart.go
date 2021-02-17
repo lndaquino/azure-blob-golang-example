@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/Azure/azure-storage-blob-go/azblob"
+	"github.com/joho/godotenv"
 )
 
 // Azure Storage Quickstart Sample - Demonstrate how to upload, list, download, and delete blobs.
@@ -26,6 +27,10 @@ import (
 // - Scalability and performance targets - https://docs.microsoft.com/azure/storage/common/storage-scalability-targets
 // - Azure Storage Performance and Scalability checklist https://docs.microsoft.com/azure/storage/common/storage-performance-checklist
 // - Storage Emulator - https://docs.microsoft.com/azure/storage/common/storage-use-emulator
+
+func init() {
+	godotenv.Load()
+}
 
 func randomString() string {
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -45,7 +50,7 @@ func handleErrors(err error) {
 	}
 }
 
-func main() {
+func start() {
 	fmt.Printf("Azure Blob storage quick start sample\n")
 
 	// From the Azure portal, get your storage account name and key and set environment variables.
